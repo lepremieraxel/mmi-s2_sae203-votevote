@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <!-- META -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- LINK -->
+    <!-- TITLE -->
+    <title>Charts</title>
+  </head>
+  <body>
+    <div class="graphique-box">
+      <canvas id="graphique"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const data = {
+      labels: [
+        'Fêtard',
+        'Branleur',
+        'Réservé',
+        'Casanier',
+        'Bosseur',
+        'Extraverti'
+     ],
+      datasets: [{
+        label: 'MMI',
+        data: [5, 20, 40, 50, 70, 90],
+        fill: false,
+        borderColor: 'rgb(255, 99, 132)',
+        pointBackgroundColor: 'rgb(255, 99, 132)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgb(255, 99, 132)'
+      }]
+      };
+      const config = {
+        type: 'radar',
+        data: data,
+        options: {
+          aspectRatio: 2.5,
+          elements: {
+            line: {
+              borderWidth: 3
+            }
+          }
+        },
+      };
+      const myChart = new Chart(document.getElementById('graphique'), config);  
+    </script>
+  </body>
+</html>
