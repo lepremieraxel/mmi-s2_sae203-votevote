@@ -59,7 +59,7 @@ form{
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  width: 25%;
+  width: 50%;
   margin-top: 25px;
 }
 .radio-cell{
@@ -72,7 +72,7 @@ form{
   background: var(--gradient);
   border-radius: 6px;
   margin: 10px;
-  flex: 1 0 21%;
+  flex: 1 0 26%;
 }
 .radio-bg{
   width: 93%;
@@ -170,6 +170,42 @@ form{
   color: var(--white);
   font-weight: bold;
   margin-top: 35px;
+  transition: .3s;
+}
+.btn-form:hover, .btn-form:focus{
+  transform: scale(1.05);
+}
+/* chart */
+.chart-container{
+  margin: 50px 0;
+  width: 40%;
+}
+/* footer */
+footer{
+  width: 100%;
+  padding: 25px 25% 0;
+  background-color: #8397d1b0;
+  position: relative;
+}
+footer .footer-up p{
+  text-align: justify;
+  padding-left: 7px;
+  margin-bottom: 50px;
+}
+footer .footer-down p{
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  background-color: var(--violet-c);
+}
+footer a{
+  color: var(--violet-f);
+}
+footer a:hover{
+  color: var(--fuschia);
 }
 
 /* responsive */
@@ -177,15 +213,21 @@ form{
   .radio-container{
     width: 70%;
   }
-  .email-container{
+  .email-container, .chart-container{
     width: 65%;
+  }
+  footer{
+    padding: 25px;
   }
 }
 @media screen and (max-width: 768px){
   .radio-container{
     width: 100%;
   }
-  .email-container{
+  .email-container, .chart-container{
     width: 95%;
+  }
+  footer{
+    padding: 25px;
   }
 }
