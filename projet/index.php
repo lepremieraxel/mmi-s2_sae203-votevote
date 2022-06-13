@@ -27,42 +27,10 @@
   <body>
     <!-- logo -->
     <a href="" class="main-logo"><img src="src/img/logo_mmi.png" alt="mmi tarbes" /></a>
-    <?php
-      if(isset($_GET['e'])){
-        $etat = htmlspecialchars($_GET['e']);
-        switch($etat){
-          case 'success':
+    <?php 
+      include "src/includes/vote_alert.php";
+      include "src/includes/question_active.php";
     ?>
-            <div class="form-alert form-success">
-              <h6>Votre réponse a été enregistré avec succès.</h6>
-            </div>
-          <?php
-            break;
-          case 'email':
-    ?>
-          <div class="form-alert form-error">
-            <h6>Votre email est invalide.</h6>
-          </div>
-        <?php
-          break;
-        case 'already':
-    ?>
-          <div class="form-alert form-error">
-            <h6>Vous avez déjà voté.</h6>
-          </div>
-        <?php
-          break;
-        case 'empty':
-    ?>
-          <div class="form-alert form-error">
-            <h6>Vous devez faire un choix et indiquer votre email.</h6>
-          </div>
-        <?php
-          break;
-        }
-      }
-    ?>
-    <?php include "src/includes/question_active.php";?>
     <!-- question qui est activée -->
     <h1 class="question"><?php echo $question;?></h1>
     <form action="src/php/vote.php" method="post">

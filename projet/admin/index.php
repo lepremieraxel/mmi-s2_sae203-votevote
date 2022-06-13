@@ -16,6 +16,10 @@
     <title>ADMIN</title>
   </head>
   <body>
+    <?php 
+      include "../src/includes/question_active.php";
+      include "../src/includes/page_admin.php";
+    ?>
     <div class="container mt-4">
       <h1 class="text-uppercase text-center">Administration</h1>
       <div class="d-flex flex-row flex-wrap mt-5 justify-content-between">
@@ -24,12 +28,12 @@
             <div class="d-flex flex-row flex-wrap align-items-center">
               <h3 class="text-uppercase text-decoration-underline">Question active :</h3>
             </div>
-            <h3 class="fw-normal ms-3">Quelle mascotte préfères tu ?</h3>
+            <h3 class="fw-normal ms-3"><?php echo $question;?></h3>
             <div class="d-flex flex-row flex-wrap align-items-start justify-content-between ps-3 pe-3 mt-3">
               <div class="d-flex flex-column align-items-center">
                 <div class="d-flex flex-row align-items-center">
                   <h4 class="fs-4">Nombre de votants :</h4>
-                  <h4 class="fw-normal ms-3">367</h4>
+                  <h4 class="fw-normal ms-3"><?php echo $nbVotants;?></h4>
                 </div>
                 <div class="resultat-active">
                   <canvas class="chart" aria-label="chart" role="img"></canvas>
@@ -73,6 +77,6 @@
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="../chart.js"></script>
+    <script src="../src/js/chart.js"></script>
   </body>
 </html>
