@@ -20,48 +20,55 @@
       rel="stylesheet"
     />
     <!-- css -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="src/css/style.css" />
     <!-- TITLE -->
     <title>MMI VOTE</title>
   </head>
   <body>
     <!-- logo -->
-    <a href="" class="main-logo"><img src="logo_mmi.png" alt="mmi tarbes" /></a>
+    <a href="" class="main-logo"><img src="src/img/logo_mmi.png" alt="mmi tarbes" /></a>
+    <?php
+      if(isset($_GET['e'])){
+        $etat = htmlspecialchars($_GET['e']);
+        switch($etat){
+          case 'success':
+    ?>
+            <div class="form-alert form-success">
+              <h6>Votre réponse a été enregistré avec succès.</h6>
+            </div>
+          <?php
+            break;
+          case 'email':
+    ?>
+          <div class="form-alert form-error">
+            <h6>Votre email est invalide.</h6>
+          </div>
+        <?php
+          break;
+        case 'already':
+    ?>
+          <div class="form-alert form-error">
+            <h6>Vous avez déjà voté.</h6>
+          </div>
+        <?php
+          break;
+        case 'empty':
+    ?>
+          <div class="form-alert form-error">
+            <h6>Vous devez faire un choix et indiquer votre email.</h6>
+          </div>
+        <?php
+          break;
+        }
+      }
+    ?>
+    <?php include "src/includes/question_active.php";?>
     <!-- question qui est activée -->
-    <h1 class="question">Question à activer</h1>
-    <form action="" method="post">
+    <h1 class="question"><?php echo $question;?></h1>
+    <form action="src/php/vote.php" method="post">
       <!-- réponses -->
       <div class="radio-container">
-        <div class="radio-cell">
-          <input type="radio" name="answ" id="answ1" required value="answ1" />
-          <label for="answ1" class="radio-label">Réponse1</label>
-          <div class="radio-bg"></div>
-        </div>
-        <div class="radio-cell">
-          <input type="radio" name="answ" id="answ2" required value="answ2" />
-          <label for="answ2" class="radio-label">Réponse2</label>
-          <div class="radio-bg"></div>
-        </div>
-        <div class="radio-cell">
-          <input type="radio" name="answ" id="answ3" required value="answ3" />
-          <label for="answ3" class="radio-label">Réponse3</label>
-          <div class="radio-bg"></div>
-        </div>
-        <div class="radio-cell">
-          <input type="radio" name="answ" id="answ4" required value="answ4" />
-          <label for="answ4" class="radio-label">Réponse4</label>
-          <div class="radio-bg"></div>
-        </div>
-        <div class="radio-cell">
-          <input type="radio" name="answ" id="answ5" required value="answ5" />
-          <label for="answ5" class="radio-label">Réponse5</label>
-          <div class="radio-bg"></div>
-        </div>
-        <div class="radio-cell">
-          <input type="radio" name="answ" id="answ6" required value="answ6" />
-          <label for="answ6" class="radio-label">Réponse6</label>
-          <div class="radio-bg"></div>
-        </div>
+        <?php include "src/includes/answers_active.php";?>
       </div>
       <!-- email -->
       <div class="email-container">
@@ -96,6 +103,6 @@
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="chart.js"></script>
+    <script src="src/js/chart.js"></script>
   </body>
 </html>
