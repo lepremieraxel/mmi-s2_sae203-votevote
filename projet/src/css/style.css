@@ -12,8 +12,6 @@
   --violet-f: #512660;
   --violet-c: #8397d1;
   --gradient: linear-gradient(to right, var(--violet-f) 0%, var(--fuschia) 100%);
-  --error: rgb(205, 16, 16);
-  --success: rgb(11, 168, 6);
 }
 /* body */
 body{
@@ -177,27 +175,6 @@ form{
 }
 .btn-form:hover, .btn-form:focus{
   transform: scale(1.05);
-}
-/* erreur */
-.form-alert{
-  border-radius: 6px;
-  padding: 5px 10px;
-  color: var(--black);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 20px 0;
-}
-.form-alert h6{
-  margin: 0;
-}
-.form-error{
-  border: 1px solid var(--error);
-  background-color: rgba(205, 16, 16, 0.8);
-}
-.form-success{
-  border: 1px solid var(--success);
-  background-color: rgba(11, 168, 6, 0.7);
 }
 /* chart */
 .chart-container{

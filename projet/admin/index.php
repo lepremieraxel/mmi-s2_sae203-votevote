@@ -26,7 +26,7 @@
         <div class="d-flex flex-column">
           <div class="d-flex flex-column">
             <div class="d-flex flex-row flex-wrap align-items-center">
-              <h3 class="text-uppercase text-decoration-underline">Question active :</h3>
+              <a href="../" class="text-uppercase text-black fs-2">Question active :</a>
             </div>
             <h3 class="fw-normal ms-3"><?php echo $question;?></h3>
             <div class="d-flex flex-row flex-wrap align-items-start justify-content-between ps-3 pe-3 mt-3">
@@ -42,12 +42,13 @@
               <div class="d-flex flex-column align-items-center ms-5">
                 <h4>Votes (précis) :</h4>
                 <ul>
-                  <li>Réponse1 : 30</li>
-                  <li>Réponse2 : 25</li>
-                  <li>Réponse3 : 150</li>
-                  <li>Réponse4 : 38</li>
-                  <li>Réponse5 : 78</li>
-                  <li>Réponse6 : 46</li>
+                  <?php foreach($answQ as $answQRow){
+                      $check_answU->execute(array($answQRow['id_answer_q'], $questions['id_question']));
+                      $answU = $check_answU->fetchColumn();
+                      $labels[] = $answQRow['answer_q'];
+                      $datas[] = $answU;
+                      echo "<li>".$answQRow['answer_q']." : ".$answU."</li>";
+                    }?>
                 </ul>
               </div>
             </div>
@@ -59,11 +60,11 @@
             <div class="d-flex flex-column align-items-start justify-content-between ps-3 pe-3 mt-3">
               <div class="d-flex flex-row align-items-center ">
                 <h4 class="fs-4">Nombre de questions :</h4>
-                <h4 class="fw-normal ms-3">34</h4>
+                <h4 class="fw-normal ms-3"><?php echo $nbQuestions?></h4>
               </div>
               <div class="d-flex flex-row align-items-center ">
                 <h4 class="fs-4">Nombre de votes (total) :</h4>
-                <h4 class="fw-normal ms-3">1346</h4>
+                <h4 class="fw-normal ms-3"><?php echo $nbVotes?></h4>
               </div>
             </div>
           </div>
@@ -76,7 +77,37 @@
         </div>
       </div>
     </div>
+
+    <?php
+      
+      ?>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="../src/js/chart.js"></script>
+    <script>
+      const myCanvas = document.querySelector('.chart');
+      const data = {
+        labels: <?php echo json_encode($labels);?>,
+        datasets: [{
+          label: <?php echo json_encode($question);?>,
+          data: <?php echo json_encode($datas);?>,
+          backgroundColor: [
+            'rgb(24, 52, 143)',
+            'rgb(64, 164, 216)',
+            'rgb(51, 190, 183)',
+            'rgb(178, 194, 36)',
+            'rgb(254, 204, 47)',
+            'rgb(248, 162, 39)',
+            'rgb(246, 99, 32)',
+            'rgb(219, 57, 55)',
+            'rgb(238, 101, 121)',
+            'rgb(163, 100, 217)'
+          ],
+          hoverOffset: 1
+        }]
+      };
+      const myChart = new Chart(myCanvas, {
+        type: 'doughnut',
+        data: data,
+      }); 
+    </script>
   </body>
 </html>

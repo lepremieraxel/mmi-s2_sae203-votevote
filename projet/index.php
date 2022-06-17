@@ -21,6 +21,7 @@
     />
     <!-- css -->
     <link rel="stylesheet" href="src/css/style.css" />
+    <link rel="stylesheet" href="src/css/erreur.css" />
     <!-- TITLE -->
     <title>MMI VOTE</title>
   </head>
@@ -70,7 +71,47 @@
         <p>&copy; MMI TARBES 2022 - Axel MARCIAL, Jade ROGNON, Victor MONCASSIN, Sémi LYAMANI & Sady GRAEFF</p>
       </div>
     </footer>
+    <?php include "src/includes/page_admin.php"?>
+    <?php foreach($answQ as $answQRow){
+      $check_answU->execute(array($answQRow['id_answer_q'], $questions['id_question']));
+      $answU = $check_answU->fetchColumn();
+      $labels[] = $answQRow['answer_q'];
+      $datas[] = $answU;
+    }?>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="src/js/chart.js"></script>
+    <script>
+      const myCanvas = document.querySelector('.chart');
+      const data = {
+        labels: <?php echo json_encode($labels);?>,
+        datasets: [{
+          label: <?php echo json_encode($question);?>,
+          data: <?php echo json_encode($datas);?>,
+          backgroundColor: [
+            'rgb(24, 52, 143)',
+            'rgb(64, 164, 216)',
+            'rgb(51, 190, 183)',
+            'rgb(178, 194, 36)',
+            'rgb(254, 204, 47)',
+            'rgb(248, 162, 39)',
+            'rgb(246, 99, 32)',
+            'rgb(219, 57, 55)',
+            'rgb(238, 101, 121)',
+            'rgb(163, 100, 217)'
+          ],
+          hoverOffset: 1
+        }]
+      };
+      const myChart = new Chart(myCanvas, {
+        type: 'doughnut',
+        data: data,
+        options: {
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        }
+      }); 
+    </script>
   </body>
 </html>

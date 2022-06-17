@@ -1,0 +1,21 @@
+/* erreur */
+.form-alert{
+  border-radius: 6px;
+  padding: 5px 10px;
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+.form-alert h6{
+  margin: 0;
+}
+.form-error{
+  border: 1px solid rgb(205, 16, 16);
+  background-color: rgba(205, 16, 16, 0.8);
+}
+.form-success{
+  border: 1px solid rgb(11, 168, 6);
+  background-color: rgba(11, 168, 6, 0.7);
+}

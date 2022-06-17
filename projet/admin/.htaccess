@@ -1,0 +1,4 @@
+AuthUserFile /xampp/htdocs/sae203/projet/admin/.htpasswd
+AuthType Basic
+AuthName "ADMIN ZONE"
+Require valid-user
