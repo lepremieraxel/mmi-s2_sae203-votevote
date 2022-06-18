@@ -1,6 +1,6 @@
 <?php
 
-require_once '/home/xesz8174/sae203/src/config/config.php';
+require_once '/xampp/htdocs/sae203/projet/src/config/config.php';
 
 if(isset($_POST['actif']) && !empty($_POST['actif'])){
   if(isset($_POST['delBtn'])){

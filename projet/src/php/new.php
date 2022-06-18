@@ -1,5 +1,5 @@
 <?php
-require_once '/home/xesz8174/sae203/src/config/config.php';
+require_once '../config/config.php';
 
 if(isset($_POST['intitule']) && isset($_POST['answ']) && !empty($_POST['intitule']) && !empty($_POST['answ'])){
 

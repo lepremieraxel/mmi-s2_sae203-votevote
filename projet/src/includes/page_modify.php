@@ -1,5 +1,5 @@
 <?php
-require_once '/home/xesz8174/sae203/src/config/config.php';
+require_once '/xampp/htdocs/sae203/projet/src/config/config.php';
 
 $check_question = $bdd->query('SELECT * FROM questions WHERE id_question = '.$_GET['id'].'');
 $question = $check_question->fetch();

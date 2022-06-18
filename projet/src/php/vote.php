@@ -1,5 +1,5 @@
 <?php
-require_once '/home/xesz8174/sae203/src/config/config.php';
+require_once '../config/config.php';
 
 if(isset($_POST['answ']) && isset($_POST['email']) && !empty($_POST['answ']) && !empty($_POST['email'])){
   $id_question = htmlspecialchars($_POST['id_question']);
