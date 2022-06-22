@@ -29,7 +29,9 @@ if(isset($_POST['intitule']) && isset($_POST['answ']) && !empty($_POST['intitule
   
   $add_answ = $bdd->prepare('INSERT INTO answers_q (answer_q, id_question) VALUES (:answer_q, '.$idQuestion.')');
   foreach($answ as $answRow){
-    $add_answ->execute(array('answer_q' => $answRow));
+    if(!empty($answRow)){
+      $add_answ->execute(array('answer_q' => $answRow));
+    }
   }
 
   if($row_q == 0){
