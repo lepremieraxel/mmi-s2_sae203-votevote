@@ -30,5 +30,12 @@ if(isset($_GET['e'])){
     </div>
   <?php
     break;
+  case 'isnotmmi':
+?>
+    <div class="form-alert form-error">
+      <h6>Vous devez être en MMI pour pouvoir voter.</h6>
+    </div>
+  <?php
+    break;
   }
 }

@@ -11,18 +11,24 @@ if(isset($_POST['answ']) && isset($_POST['email']) && !empty($_POST['answ']) && 
   $data = $check->fetch();
   $row = $check->rowCount();
 
+  $check_email = $bdd->prepare('SELECT * FROM email_mmi WHERE email = ?');
+  $check_email->execute(array($email));
+  $row_email = $check_email->rowCount();
+
   if($row == 0){
-    if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+    if($row_email >= 1){
+      if(filter_var($email, FILTER_VALIDATE_EMAIL)){
 
-      $insert = $bdd->prepare('INSERT INTO answers_u(email, id_answer_q, id_question) VALUES(:email, :id_answer_q, :id_question)');
+        $insert = $bdd->prepare('INSERT INTO answers_u(email, id_answer_q, id_question) VALUES(:email, :id_answer_q, :id_question)');
 
-      $insert->execute(array(
-        'email' => $email,
-        'id_answer_q' => $answ,
-        'id_question' => $id_question
-      ));
+        $insert->execute(array(
+          'email' => $email,
+          'id_answer_q' => $answ,
+          'id_question' => $id_question
+        ));
 
-      header('Location: ../../index.php?e=success'); die();
-    } else header('Location: ../../index.php?e=email'); die();
+        header('Location: ../../index.php?e=success'); die();
+      } else header('Location: ../../index.php?e=email'); die();
+    } else header('Location: ../../index.php?e=isnotmmi'); die();
   } else header('Location: ../../index.php?e=already'); die();
 } else header('Location: ../../index.php?e=empty'); die();
